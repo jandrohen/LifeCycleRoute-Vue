@@ -21,4 +21,7 @@ export default {
   font-weight: bold;
   margin: 0 0.5rem;
 }
+a.router-link-exact-active {
+  color: #42b983;
+}
 </style>
