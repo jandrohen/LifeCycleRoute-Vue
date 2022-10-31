@@ -1,10 +1,29 @@
 <template>
-  <h1>Pokemon Page</h1>
+  <h1>Pokemon: <span>#{{ id }}</span></h1>
 </template>
 
 <script>
 export default {
-  name: "PokemonPage"
+
+  props: {
+    id: {
+      type: Number,
+      required: true
+    }
+  },
+  name: "PokemonPage",
+
+  data() {
+    return {
+      // id: null
+    };
+  },
+  created() {
+    // const { id } = this.$route.params;
+    // this.id = id;
+    // console.log(id);
+  }
+
 }
 </script>
 
