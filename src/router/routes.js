@@ -3,14 +3,20 @@ import {createRouter, createWebHashHistory } from 'vue-router';
 const routes = [
     {
         path: '/',
+        redirect: '/home'
+    },
+    {
+        path: '/home',
+        name: 'home',
         component: () => import(/* webpackChunkName: "ListPage" */'@/modules/pokemon/pages/ListPage')
     },
     {
         path: '/about',
+        name: 'about',
         component: () => import(/* webpackChunkName: "AboutPage" */'@/modules/pokemon/pages/AboutPage')
     },
     {
-        path: '/:id',
+        path: '/pokemonid/:id',
         name: 'pokemon-id',
         props: ( route ) => {
             const id = Number(route.params.id);
