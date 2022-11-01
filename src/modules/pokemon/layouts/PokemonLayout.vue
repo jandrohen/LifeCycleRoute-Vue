@@ -8,7 +8,7 @@
 
 <style scoped>
 .pokemon-layout {
-  background-color: #f0f0f0;
+  background-color: #FFFF00;
   padding: 20px;
 }
 </style>
