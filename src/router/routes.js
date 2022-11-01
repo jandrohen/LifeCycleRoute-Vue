@@ -1,4 +1,4 @@
-import {createRouter, createWebHashHistory } from 'vue-router';
+import {createRouter, createWebHashHistory} from 'vue-router';
 
 const routes = [
     {
@@ -8,9 +8,9 @@ const routes = [
 
     // Pokémon Layout
     {
-      path: '/pokemon',
-      name: 'pokemon',
-      component: () => import(/* webpackChunkName: "PokemonLayout" */'@/modules/pokemon/layouts/PokemonLayout'),
+        path: '/pokemon',
+        name: 'pokemon',
+        component: () => import(/* webpackChunkName: "PokemonLayout" */'@/modules/pokemon/layouts/PokemonLayout'),
         children: [
             {
                 path: 'home',
@@ -25,7 +25,7 @@ const routes = [
             {
                 path: 'pokemonid/:id',
                 name: 'pokemon-id',
-                props: ( route ) => {
+                props: (route) => {
                     const id = Number(route.params.id);
                     return isNaN(id) ? {id: 1} : {id}
                 },
@@ -33,7 +33,7 @@ const routes = [
             },
             {
                 path: '',
-                redirect: { name: 'pokemon-about'}
+                redirect: {name: 'pokemon-about'}
             }
         ]
     },
@@ -56,7 +56,7 @@ const routes = [
             },
             {
                 path: '',
-                redirect: { name: 'dbz-characters'}
+                redirect: {name: 'dbz-characters'}
             }
         ]
     },
@@ -70,6 +70,19 @@ const routes = [
 const router = createRouter({
     history: createWebHashHistory(),
     routes,
+})
+
+// Guard Global Sync
+router.beforeEach((to, from, next) => {
+    // console.log({to, from, next});
+    const random = Math.random() * 100;
+    if (random > 50) {
+        console.log('Acceso permitido');
+        next();
+    } else {
+        console.log(random, 'Acceso denegado por el before each Guard');
+        next({name: 'pokemon-home'});
+    }
 })
 
 export default router;
